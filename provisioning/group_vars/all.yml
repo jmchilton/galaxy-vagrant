@@ -1,0 +1,61 @@
+---
+# file: group_vars/all_ubuntu_hosts.yml
+
+# for the 'supervisor' role
+supervisor_init_file: ubuntu.init
+
+pkg_module: apt
+
+# note that these packages will be overridden by packages in more specific vars
+# files. i have not found a good way to merge these YAML lists.
+packages:
+  - zsh
+
+# Ideally these would be separated into role-based vars_file(s)
+
+# for the 'nginx' role
+# A bit of hackery with the template substitution here
+gxy_nginx_pkg_name: gxy-nginx state=latest
+nginx_conf_user: www-data
+nginx_conf_group: www-data
+
+# for the 'proftpd' role
+gxy_proftpd_pkg_name: gxy-proftpd
+
+# for the 'python_dev' role
+python_dev_pkg_name: python-dev
+
+# for the 'virtualenv' role
+python_virtualenv_pkg_name: python-virtualenv
+
+# for the 'postfix' role
+postfix_conf_dir: /etc/postfix
+
+# for the buildbot roles
+hg_pkg_name: mercurial
+git_pkg_name: git
+buildbot_pkg_name: buildbot
+buildslave_pkg_name: buildbot-slave
+
+packages:
+  - python-dev
+  - git
+  - zsh
+  - gfortran
+
+galaxy_user: galaxy
+galaxy_uid: 1100
+
+
+galaxy_changeset_id: 9b78595ec1142d75930dbfffd8baeaa689cb4c6c
+galaxy_web_venv_dir: /home/galaxy/web/venv
+galaxy_handler_venv_dir: /home/galaxy/handler/venv
+galaxy_web_server_dir: /home/galaxy/web/server
+galaxy_handler_server_dir: /home/galaxy/handler/server
+
+galaxy_instance_name: production
+galaxy_config_dir: /home/galaxy/production/config
+galaxy_handler_config_dir: /home/galaxy/production/handler_config
+galaxy_log_dir: /home/galaxy/logs
+
+galaxy_config_id_secret: abcdefghijk

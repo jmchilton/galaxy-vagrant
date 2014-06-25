@@ -1,0 +1,8 @@
+---
+# file: roles/packages/tasks/main.yml
+#   basic role to install packages from a provided list
+
+- name: Install packages
+  action: "{{ pkg_module }} pkg={{ item }}"
+  with_items: packages
+  when: packages is defined

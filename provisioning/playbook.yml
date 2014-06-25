@@ -1,0 +1,30 @@
+---
+# file: galaxy.yml
+#   Manage Galaxy installations
+
+#- hosts: all
+#  remote_user: root
+#  sudo: True
+#  roles:
+#    - packages
+#    - virtualenv
+#    - users
+
+- hosts: all
+  sudo: True
+  sudo_user: "{{ galaxy_user }}"
+  roles:
+    - role: galaxy_config
+      galaxy_ini_path: "{{ galaxy_config_dir }}/galaxy.ini"
+      galaxy_ini_fragments: [ 05_uwsgi.ini, 10_app_common.ini ]
+      galaxy_restarter: restart galaxy uwsgi
+    - role: galaxy_config
+      galaxy_ini_path: "{{ galaxy_handler_config_dir }}/galaxy.ini"
+      galaxy_ini_fragments: [ 10_app_common.ini, 50_handlers.ini ]
+      galaxy_restarter: restart galaxy paste
+#- hosts: all
+#  remote_user: galaxy
+#  sudo: True
+#  roles:
+#    - galaxy
+#    - galaxy_static

@@ -1,0 +1,5 @@
+---
+# file: roles/virtualenv/tasks/main.yml
+
+- name: Install virtualenv
+  action: "{{ pkg_module }} pkg={{ python_virtualenv_pkg_name }}"
