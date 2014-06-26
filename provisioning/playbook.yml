@@ -1,15 +1,14 @@
 ---
-# file: galaxy.yml
-#   Manage Galaxy installations
+# file: playbook.yml
+#   Provision vagrant-galaxy instance.
 
-#- hosts: all
-#  remote_user: root
-#  sudo: True
-#  roles:
-#    - packages
-#    - virtualenv
-#    - users
-
+- hosts: all
+  remote_user: root
+  sudo: True
+  roles:
+    - packages
+    - virtualenv
+    - users
 - hosts: all
   sudo: True
   sudo_user: "{{ galaxy_user }}"
@@ -22,9 +21,9 @@
       galaxy_ini_path: "{{ galaxy_handler_config_dir }}/galaxy.ini"
       galaxy_ini_fragments: [ 10_app_common.ini, 50_handlers.ini ]
       galaxy_restarter: restart galaxy paste
-#- hosts: all
-#  remote_user: galaxy
-#  sudo: True
-#  roles:
-#    - galaxy
-#    - galaxy_static
+- hosts: all
+  remote_user: galaxy
+  sudo: True
+  roles:
+    - galaxy
+    - galaxy_static
