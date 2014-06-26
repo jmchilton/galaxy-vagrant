@@ -46,6 +46,7 @@ packages:
 galaxy_user: galaxy
 galaxy_uid: 1100
 
+pulsar_user: galaxy
 
 galaxy_changeset_id: 9b78595ec1142d75930dbfffd8baeaa689cb4c6c
 galaxy_web_venv_dir: /home/galaxy/web/venv
@@ -59,3 +60,5 @@ galaxy_handler_config_dir: /home/galaxy/production/handler_config
 galaxy_log_dir: /home/galaxy/logs
 
 galaxy_config_id_secret: abcdefghijk
+
+pulsar_server_dir: /home/galaxy/pulsar

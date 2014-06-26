@@ -11,6 +11,11 @@
     - users
 - hosts: all
   sudo: True
+  sudo_user: "{{ pulsar_user }}"
+  roles:
+    - role: pulsar
+- hosts: all
+  sudo: True
   sudo_user: "{{ galaxy_user }}"
   roles:
     - role: galaxy_config
